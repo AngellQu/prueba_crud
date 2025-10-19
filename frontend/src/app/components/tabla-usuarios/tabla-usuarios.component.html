@@ -1,0 +1,50 @@
+<div class="tabla-container">
+  <h2 class="titulo">Gestión de usuarios</h2>
+
+  <div class="botones">
+    <button mat-raised-button color="primary" (click)="nuevo()">
+      <mat-icon>person_add</mat-icon> Añadir
+    </button>
+    <button mat-raised-button color="accent" (click)="actualizar()" [disabled]="!isAnySelected">
+      <mat-icon>edit</mat-icon> Actualizar
+    </button>
+    <button mat-raised-button color="warn" (click)="eliminar()" [disabled]="!isAnySelected">
+      <mat-icon>delete</mat-icon> Eliminar
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="usuarios" class="tabla-usuarios">
+
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let usuario">
+          <mat-checkbox [(ngModel)]="usuario.selected"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let usuario">{{ usuario.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let usuario">{{ usuario.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Correo">
+        <th mat-header-cell *matHeaderCellDef>Correo</th>
+        <td mat-cell *matCellDef="let usuario">{{ usuario.correo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Edad">
+        <th mat-header-cell *matHeaderCellDef>Edad</th>
+        <td mat-cell *matCellDef="let usuario">{{ usuario.edad }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

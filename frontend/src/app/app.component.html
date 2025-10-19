@@ -1,0 +1,5 @@
+<div class="app-container">
+  <app-usuario-formulario *ngIf="mostrarFormularioActivo" [usuario]="usuarioSeleccionado"
+    (actualizado)="refrescarTabla()" (cerrar)="cerrarFormulario()"></app-usuario-formulario>
+  <app-tabla-usuarios (abrirFormulario)="mostrarFormulario($event)"></app-tabla-usuarios>
+</div>

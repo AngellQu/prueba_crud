@@ -1,0 +1,33 @@
+<mat-card class="form-container">
+  <mat-card-title class="form-title">
+    {{ usuario ? 'Actualizar Usuario' : 'Crear Usuario' }}
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" formControlName="edad" required>
+      </mat-form-field>
+
+      <div class="form-buttons">
+        <button mat-raised-button color="primary" type="submit">
+          {{ usuario ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <button mat-button color="warn" type="button" (click)="cancelarFormulario()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
